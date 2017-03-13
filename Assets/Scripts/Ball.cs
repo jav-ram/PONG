@@ -8,8 +8,8 @@ public class Ball : MonoBehaviour {
 	public float maxSpeed;
 	public GameObject camera;
 
-	public Text s1;
-	public Text s2;
+	private Text s1;
+	private Text s2;
 	private float m; 
 	private Rigidbody2D rb;
 	private Vector2 v;
@@ -61,18 +61,10 @@ public class Ball : MonoBehaviour {
 				score = (int.Parse(s2.text)) + 1;
 				s2.text = "" + score;
 			}
-			StartCoroutine (Example (0.2f));
 			GameObject.Find ("Main Camera").GetComponent<Round> ().StartRound();
-
-
-		}
+		} 
 
 	}
 
-	IEnumerator Example(float time){
-		Debug.Log ("Antes");
-		yield return new WaitForSeconds(time);
-		Debug.Log ("Despues");
-	}
 
 }

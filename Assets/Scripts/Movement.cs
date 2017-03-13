@@ -8,9 +8,11 @@ public class Movement : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private bool actualP;
+	private AudioSource audio;
 
 	// Use this for initialization
 	void Start () {
+		audio = GetComponent<AudioSource> ();
 		if (player.tag.Equals ("P1")) {
 			actualP = true;
 		} else if (player.tag.Equals ("P2")) {
@@ -47,6 +49,14 @@ public class Movement : MonoBehaviour {
 		} else {
 			rb.velocity = new Vector2 (0,0);
 		}
+	}
+
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.tag.Equals ("Ball")) {
+			audio.Play ();
+		}
+			
+
 	}
 
 
